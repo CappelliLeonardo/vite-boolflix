@@ -7,28 +7,55 @@ export default {
         };
     },
     methods: {
+        getFlag(lang){
+            let finalLink ='https://flagicons.lipis.dev/flags/4x3/';
 
+            if(lang == 'en'){
+                finalLink += 'gb';
+            }
+            else if(lang == 'ja'){
+                finalLink += 'jp';
+            }
+            else if(lang == 'ko'){
+                finalLink += 'xk';
+            }
+            else{
+                finalLink += lang;
+            }
+            finalLink+= '.svg';
+
+            return finalLink;
+
+        }
     }
 }
 </script>
 
 <template>
     <main>
+        <h2>
+            MOVIES
+        </h2>
         <div>
             <ul>
                 <li v-for="(movie, i) in store.movies" :key="i">
                     <div>
-                        title {{ movie.title }}
+                        Title: {{ movie.title }}
                     </div>
                     <div>
-                        Original title {{ movie.original_title }}
+                        Original title: {{ movie.original_title }}
                     </div>
                     <div>
-                        Original language {{ movie.original_language }}
+                        Original language: {{ movie.original_language }}
+                    </div>
+                    <div>
+                        Flag:
+                        <img :src="getFlag(movie.original_language)" :alt="movie.original_language">
                     </div>
                     <div>
                         Vote: {{ movie.vote_average }}
                     </div>
+                    <hr>
                 </li>
             </ul>
         </div>
@@ -38,19 +65,25 @@ export default {
         </h2>
         <div>
             <ul>
-                <li v-for="(tvseries, i) in store.tvseries" :key="i">
+                <li v-for="(tvserie, i) in store.tvseries" :key="i">
                     <div>
-                        Name {{ tvseries.name }}
+                        Name: {{ tvserie.name }}
                     </div>
                     <div>
-                        Original title {{ tvseries.original_name }}
+                        Original title: {{ tvserie.original_name }}
                     </div>
                     <div>
-                        Original language {{ tvseries.original_language }}
+                        Original language: {{ tvserie.original_language }}
                     </div>
                     <div>
-                        Vote: {{ tvseries.vote_average }}
+                        Flag:
+                        <img :src="getFlag(tvserie.original_language)" :alt="tvserie.original_language">
                     </div>
+                    <div>
+                        Vote: {{ tvserie.vote_average }}
+                    </div>
+                    
+                    <hr>
                 </li>
             </ul>
         </div>
@@ -58,4 +91,8 @@ export default {
 </template>
 
 <style lang="scss" scoped>
+img{
+    width: 50px;
+    height: 50px;
+}
 </style>
