@@ -24,10 +24,32 @@ export default {
                         Original title {{ movie.original_title }}
                     </div>
                     <div>
-                        Original language {{ movie.language }}
+                        Original language {{ movie.original_language }}
                     </div>
                     <div>
                         Vote: {{ movie.vote_average }}
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <h2>
+            TVSERIES
+        </h2>
+        <div>
+            <ul>
+                <li v-for="(tvseries, i) in store.tvseries" :key="i">
+                    <div>
+                        Name {{ tvseries.name }}
+                    </div>
+                    <div>
+                        Original title {{ tvseries.original_name }}
+                    </div>
+                    <div>
+                        Original language {{ tvseries.original_language }}
+                    </div>
+                    <div>
+                        Vote: {{ tvseries.vote_average }}
                     </div>
                 </li>
             </ul>

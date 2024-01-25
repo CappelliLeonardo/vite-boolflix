@@ -20,33 +20,33 @@ export default {
     },  
     methods: {
         search(){
-            
 
+            //rendo vuoto l'array una volta effettuata la ricerca
+            this.store.movies = [];
             axios.get(this.store.baseUrlMovie, {
                 params: {
-                    query: this.store.inputUsertext.length > 0 ? this.store.inputUsertext : null
+                    query: this.store.inputUserText.length > 0 ? this.store.inputUserText : null
                 }
             }).then((response)=>{
             console.log(response)
                 for(let i = 0; i < response.data.results.length; i++){
                     this.store.movies.push(response.data.results[i])
                     //console.log(this.store.movies)
-
-                    //rendo vuoto l'array una volta effettuata la ricerca
-                    this.store.movies = [];
                 }
         })
-        //     axios.get(this.store.baseUrlTvSeries, {
-        //         params: {
-        //             query: this.store.inputUsertext.length > 0 ? this.store.inputUsertext : null
-        //         }
-        //     }).then((response)=>{
-        //     console.log(response)
-        //         for(let i = 0; i < response.data.results.length; i++){
-        //             this.store.movies.push(response.data.results[i])
-        //             //console.log(this.store.movies)
-        //         }
-        // })
+            //rendo vuoto l'array una volta effettuata la ricerca
+            this.store.tvseries = [];
+            axios.get(this.store.baseUrlTvSeries, {
+                params: {
+                    query: this.store.inputUserText.length > 0 ? this.store.inputUserText : null
+                }
+            }).then((response)=>{
+            console.log(response)
+                for(let i = 0; i < response.data.results.length; i++){
+                    this.store.tvseries.push(response.data.results[i])
+                    //console.log(this.store.movies)
+                }
+        })
         }
         
     },
