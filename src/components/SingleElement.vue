@@ -11,6 +11,7 @@ export default {
         originalLanguage: String,
         voteAverage: Number,
         posterPath: String,
+        overviewPath:String,
     },
 
     methods:{
@@ -39,7 +40,38 @@ export default {
 </script>
 
 <template>
-    <div>
+
+    <div class="card-container">
+        <div class="thumbnail">
+            <img :src="'https://image.tmdb.org/t/p/w400/' + posterPath " alt="">
+        </div>
+        <div class="card-info">
+            <h4>
+                {{ titleOrName }}
+            </h4>
+            <h6>
+                {{ originalTitleOrName }}
+            </h6>
+            <div>
+                {{ originalLanguage.toUpperCase() }}
+                <img class="flag-img" :src="getFlag(originalLanguage)" :alt="originalLanguage">
+            </div>
+            <div>
+                {{ Math.ceil(voteAverage / 2) }}
+                <i v-for="i in  Math.ceil(voteAverage / 2) " :key="i"
+                class="fa-solid fa-star"></i>
+                <i v-for="j in 5 - Math.ceil(voteAverage / 2)" :key="j"
+                class="fa-regular fa-star"></i>
+            </div>
+            <p>
+                {{ overviewPath }}
+            </p>
+        </div>
+    </div>
+
+
+
+    <!-- <div>
         <div>
             {{ titleOrName }}
         </div>
@@ -64,12 +96,46 @@ export default {
             <i v-for="j in 5 - Math.ceil(voteAverage / 2)" :key="j"
             class="fa-regular fa-star"></i>
         </div>
-    </div>
+    </div> -->
 </template>
 
 <style lang="scss" scoped>
+@use '../assets/scss/main.scss' as*;
 .flag-img{
-
     height: 50px;
 }
+
+.card-container{
+    position: relative;
+    height:500px;
+    overflow: hidden;
+    .thumbnail{
+        width:100%;
+        height:100%;
+        img{
+            object-fit: cover;
+            width:100%;
+            height:100%;
+        }
+    }
+}
+.card-info{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    bottom:0;
+    overflow-y:auto;
+    color:white;
+    padding: 10px;
+    filter:opacity(0);
+    &:hover{
+        filter: opacity(1);
+        background-color: rgba($color: #131212d1, $alpha: 1.0);
+        opacity: 0.5;
+
+        
+    }
+}
+
+;
 </style>

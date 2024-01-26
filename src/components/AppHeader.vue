@@ -38,11 +38,16 @@ export default {
 
 <template>
     <header>
-        <div class="row">
-            <div class="col-6 offset-3">
-                <div class="input-group">
+        <div class="row justify-content-between ">
+            <div class="col-4">
+                <div>
+                    <img src="https://image.tmdb.org/t/p/w185/wwemzKWzjKYJFfCeiB57q3r4Bcm.png" alt="">
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="input-group p-4">
                     <input type="text" v-model="store.inputUserText" class="form-control" placeholder="Cerca movie o tvseries" aria-label="">
-                    <button class="btn btn-outline-secondary" @click="search()" type="button">Button</button>
+                    <button class="btn-outline-secondary" @click="search()" type="button">Search</button>
                 </div>
             </div>
         </div>
@@ -50,4 +55,7 @@ export default {
 </template>
 
 <style lang="scss" scoped>
+header{
+    background-color: black;
+}
 </style>

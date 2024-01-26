@@ -24,9 +24,9 @@ export default {
         <h2>
             MOVIES
         </h2>
-        <div>
-            <ul>
-                <li v-for="(movie, i) in store.movies" :key="i">
+        <div class="container">
+            <ul class="d-flex flex-wrap align-items-center ">
+                <li  v-for="(movie, i) in store.movies" :key="i">
                     
                     <SingleElement
                     :titleOrName="movie.title"
@@ -34,8 +34,8 @@ export default {
                     :originalLanguage="movie.original_language"
                     :voteAverage="movie.vote_average"
                     :posterPath="movie.poster_path"
+                    :overviewPath="movie.overview"
                     />
-                    <hr>
                 </li>
             </ul>
         </div>
@@ -43,8 +43,8 @@ export default {
         <h2>
             TVSERIES
         </h2>
-        <div>
-            <ul>
+        <div class="container">
+            <ul class="d-flex flex-wrap">
                 <li v-for="(tvserie, i) in store.tvseries" :key="i">
                     <SingleElement
                     :titleOrName="tvserie.name"
@@ -52,9 +52,9 @@ export default {
                     :originalLanguage="tvserie.original_language"
                     :voteAverage="tvserie.vote_average"
                     :posterPath="tvserie.poster_path"
+                    :overviewPath="tvserie.overview"
                     />
                     
-                    <hr>
                 </li>
             </ul>
         </div>
@@ -62,5 +62,21 @@ export default {
 </template>
 
 <style lang="scss" scoped>
-
+ul{
+    list-style-type: none;
+    padding: 0;
+    li{
+        width: calc(100% / 5);
+        padding-top:20px;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+}
+main{
+    background-color: #434343;
+    h2{
+        color: white;
+        font-size: 2em;
+    }
+}
 </style>
