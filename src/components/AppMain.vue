@@ -27,12 +27,13 @@ export default {
         <div>
             <ul>
                 <li v-for="(movie, i) in store.movies" :key="i">
-                    //UTILIZZO
+                    
                     <SingleElement
                     :titleOrName="movie.title"
                     :originalTitleOrName="movie.original_title"
                     :originalLanguage="movie.original_language"
                     :voteAverage="movie.vote_average"
+                    :posterPath="movie.poster_path"
                     />
                     <hr>
                 </li>
@@ -50,6 +51,7 @@ export default {
                     :originalTitleOrName="tvserie.original_name"
                     :originalLanguage="tvserie.original_language"
                     :voteAverage="tvserie.vote_average"
+                    :posterPath="tvserie.poster_path"
                     />
                     
                     <hr>
